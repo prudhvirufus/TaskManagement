@@ -27,9 +27,15 @@ const userSlice = createSlice({
     setIsFetching: (state) => {
       state.state.isFetching = false;
     },
+    loginUser: (state, action) => {
+      state.user.isAuthenticated = action.payload;
+    },
+    logoutUser: (state) => {
+      state.user.isAuthenticated = false;
+    },
   },
 });
 
-export const { setIsFetching } = userSlice.actions;
+export const { setIsFetching, loginUser, logoutUser } = userSlice.actions;
 
 export default userSlice.reducer;
