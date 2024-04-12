@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 import { useSelector } from "react-redux";
 import { Navigate, useLocation } from "react-router-dom";
 import { InitialStateType } from "../../redux/userSlice";
-import type { Dispatch } from "redux";
 
 interface Props {
   children: ReactNode;
