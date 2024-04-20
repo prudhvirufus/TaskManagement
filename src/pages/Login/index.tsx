@@ -1,10 +1,16 @@
+import LockOutlined from "@mui/icons-material/LockOutlined"
+import { Avatar, Button, Checkbox, CssBaseline, FormControlLabel, Link, Paper, TextField, ThemeProvider, Typography, createTheme } from "@mui/material"
+import {Grid,Box} from "@mui/material"
+
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../redux/userSlice";
 import { useNavigate } from "react-router-dom";
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import { Grid, Paper,Box } from "@mui/material";
+
+
+
+
+
+
 // const userFixtures = [
 //   {
 //     name: "admin",
@@ -23,6 +29,8 @@ import { Grid, Paper,Box } from "@mui/material";
 //     password: "123456",
 //   },
 // ];
+
+const defaultTheme = createTheme()
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -59,37 +67,52 @@ const Login = () => {
   return (
     <>
 
-     <Container bgcolor={'#80BCBD'} width={'100vw'} height={'100vh'}>
-        <Paper elevation={12} width={'80vw'}>
-          <Grid container bgcolor={'#AAD9BB'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} height={'80vh'} width={'80vw'} spacing={2}  justifyItems={'center'} >
-          <Box
-             component="img"
-              sx={{
-              height: '80vh',
-              width: '45vw',
+<ThemeProvider theme={defaultTheme}>
+    <Grid container component={'main'} sx={{height:'100vh',width:'100vw'}}>
+      <CssBaseline/>
+      <Grid item xs={false} sm={4} md={6} sx={{backgroundImage:'url(https://source.unsplash.com/random?wallpapers)',backgroundPosition:'center' , backgroundRepeat:'no-repeat', backgroundSize:'cover'}}></Grid>
+       <Grid item component={Paper} elevation={6} square xs={12} sm={8} md={6}>
+        <Box container sx={{display:"flex", flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+          <Avatar sx={{marginTop:4,marginBottom:1,backgroundColor:"orange"}}>
+            <LockOutlined/>
+          </Avatar>
+          <Typography sx={{marginBottom:4}} component={'h1'} variant="h5">Login</Typography>
+          <Box component={'form'}   sx={{display:'flex', flexDirection:'column',justifyContent:'center',width:"25vw"}} >
+            <TextField name="user email"  sx={{marginBottom:2}} id="email" autoFocus required label="email" autoComplete="email" />
+            <TextField name="password" sx={{marginBottom:2}} id="password" type="password" label="password" autoFocus  required/>
+            <FormControlLabel control={<Checkbox value={'remember'} color="primary"/>} label="Remember Me?" />
+            <Button type="submit"  onClick={ () => loginUserNow("admin")}   sx={{ mt: 3, mb: 2 }} variant="contained">Login</Button>
+            
+            <Grid container justifyContent={'flex-end'}>
+             <Grid item>
+               <Link href="#" variant="body2" >forgot password?</Link>
+             </Grid>
+            </Grid>
+            <Grid container justifyContent={'flex-start'}>
+             <Grid item>
+               <Link href="#" variant="body2" >Don't have an account? Sign Up</Link>
+             </Grid>
+            </Grid>
+          
+          </Box>
+
+        </Box>
+
+       </Grid>
+
+
+
+    </Grid>
+
+
+   </ThemeProvider>
         
-           }}
-             alt="The house from the offer."
-              src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&w=350&dpr=2"
-           />
-          <Grid item >
-            <TextField  id="outlined-basic" label="Enter Email" variant="outlined" />
-          </Grid>
-          <Grid item >
-          <TextField id="outlined-basic" label="Enter password" type='password' variant="outlined" />
-          </Grid>
-          <Grid item >
-          <Button  onClick={ () => loginUserNow("admin")} variant="contained">Login</Button>
-          </Grid>
-           </Grid>
-           </Paper>
 
       
-        </Container>    
     </>
 
 
    )
 };
-      
+<Button   variant="contained">Login</Button>      
 export default Login;
