@@ -1,22 +1,53 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { Home, About, Login } from "./pages";
+import {
+  Home,
+  About,
+  Login,
+  EmployeeDashboard,
+  ManagerDashoboard,
+  AdminDashboard,
+} from "./pages";
 import { ProtectedRoute } from "./auth";
 
 function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
       <Routes>
-        <Route
+        {/* <Route
           path="/dashboard"
           element={
             <ProtectedRoute>
               <Home />
             </ProtectedRoute>
           }
+        /> */}
+        <Route
+          path="/employeedashboard"
+          element={
+            <ProtectedRoute>
+              <EmployeeDashboard />
+            </ProtectedRoute>
+          }
         />
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/managerdashboard"
+          element={
+            <ProtectedRoute>
+              <ManagerDashoboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admindashboard"
+          element={
+            <ProtectedRoute>
+              <AdminDashboard />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route path="/" element={<Login />} />
         <Route path="/about" element={<About />} />
         {/* <Route path="*" element={<MissingPage />} /> */}
       </Routes>
