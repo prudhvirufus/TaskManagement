@@ -28,7 +28,7 @@ const userSlice = createSlice({
       state.state.isFetching = false;
     },
     loginUser: (state, action) => {
-      state.user.isAuthenticated = action.payload;
+      state.user = action.payload;
     },
     logoutUser: (state) => {
       state.user.isAuthenticated = false;
