@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import {
-  Home,
   About,
   Login,
   EmployeeDashboard,
@@ -14,14 +13,6 @@ function App() {
   return (
     <>
       <Routes>
-        {/* <Route
-          path="/dashboard"
-          element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          }
-        /> */}
         <Route
           path="/employeedashboard"
           element={

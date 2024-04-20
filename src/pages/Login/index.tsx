@@ -1,31 +1,30 @@
 import { useDispatch } from "react-redux";
 import { loginUser } from "../../redux/userSlice";
 import { useNavigate } from "react-router-dom";
-const userFixtures = [
-  {
-    name: "admin",
-    email: "admin@gmail.com",
-    role: "admin",
-    password: "123456",
-  },
-  {
-    name: "manager",
-    role: "manager@gmail.com",
-    password: "123456",
-  },
-  {
-    name: "employee",
-    role: "employee@gmail.com",
-    password: "123456",
-  },
-];
+// const userFixtures = [
+//   {
+//     name: "admin",
+//     email: "admin@gmail.com",
+//     role: "admin",
+//     password: "123456",
+//   },
+//   {
+//     name: "manager",
+//     role: "manager@gmail.com",
+//     password: "123456",
+//   },
+//   {
+//     name: "employee",
+//     role: "employee@gmail.com",
+//     password: "123456",
+//   },
+// ];
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const loginUserNow = () => {
-    const user = "employee";
+  const loginUserNow = (user: string) => {
     if (user === "admin") {
       dispatch(
         loginUser({
@@ -55,7 +54,7 @@ const Login = () => {
 
   return (
     <div>
-      <button onClick={loginUserNow}>Login</button>
+      <button onClick={() => loginUserNow("admin")}>Login</button>
     </div>
   );
 };
