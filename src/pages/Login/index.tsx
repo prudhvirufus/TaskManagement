@@ -5,18 +5,59 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import { Grid, Paper,Box } from "@mui/material";
+// const userFixtures = [
+//   {
+//     name: "admin",
+//     email: "admin@gmail.com",
+//     role: "admin",
+//     password: "123456",
+//   },
+//   {
+//     name: "manager",
+//     role: "manager@gmail.com",
+//     password: "123456",
+//   },
+//   {
+//     name: "employee",
+//     role: "employee@gmail.com",
+//     password: "123456",
+//   },
+// ];
 
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const loginUserNow = () => {
-    dispatch(loginUser(true));
-    navigate("/dashboard");
+  const loginUserNow = (user: string) => {
+    if (user === "admin") {
+      dispatch(
+        loginUser({
+          name: "ADMIN",
+          isAuthenticated: true,
+        })
+      );
+      navigate("admindashboard");
+    } else if (user === "manager") {
+      dispatch(
+        loginUser({
+          name: "MANAGER",
+          isAuthenticated: true,
+        })
+      );
+      navigate("managerdashboard");
+    } else if (user === "employee") {
+      navigate("employeedashboard");
+      dispatch(
+        loginUser({
+          name: "EMPLOYEE",
+          isAuthenticated: true,
+        })
+      );
+    }
   };
 
   return (
-    <div class="bg-[#80BCBD] flex flex-row justify-center  w-full  p-10">
+    <>
 
      <Container bgcolor={'#80BCBD'} width={'100vw'} height={'100vh'}>
         <Paper elevation={12} width={'80vw'}>
@@ -38,14 +79,14 @@ const Login = () => {
           <TextField id="outlined-basic" label="Enter password" type='password' variant="outlined" />
           </Grid>
           <Grid item >
-          <Button  onClick={loginUserNow} variant="contained">Login</Button>
+          <Button  onClick={ () => loginUserNow("admin")} variant="contained">Login</Button>
           </Grid>
            </Grid>
            </Paper>
 
       
         </Container>    
-    </div>
+    </>
 
 
    )
