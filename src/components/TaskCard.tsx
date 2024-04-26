@@ -21,7 +21,7 @@ type TaskCardProps = {
   };
   
   const TaskCard: React.FC<TaskCardProps>  = ({ task }) => {
-    const { title, description, image, createdDate, priority, manager } = task;
+    const { title, description, createdDate, priority, manager } = task;
   
     return (
       <>
@@ -68,7 +68,7 @@ type TaskCardProps = {
                   {manager}
                 </Typography>
               </Box>
-              <Chip label="Completed" sx={adminCardStyles.chipStyles} />
+              <Chip label={priority} sx={adminCardStyles.chipStyles} />
             </Box>
           </CardContent>
         </Card>
